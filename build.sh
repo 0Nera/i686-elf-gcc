@@ -285,8 +285,8 @@ function compileGCC {
         mkdir -p build-gcc-$GCC_VERSION
         cd build-gcc-$GCC_VERSION
         
-        configureArgs="--target=${BUILD_TARGET} --disable-nls --enable-languages=c,c++ --without-headers --prefix=$BUILD_DIR/$1/output"
-        
+        configureArgs="--target=${BUILD_TARGET} --disable-nls --enable-languages=c,c++,go --without-headers --prefix=$BUILD_DIR/$1/output"
+        echo $BUILD_DIR/$1/output
         if [ $1 == "windows" ]
         then
             configureArgs="--host=i686-w64-mingw32.static $configureArgs"
