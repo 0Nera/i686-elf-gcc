@@ -48,5 +48,17 @@ jobs:
         run: |
           ls $HOME/build-i686-elf
           ls $HOME/build-i686-elf/bin
-
+          ls ~/build-i686-elf/
       
+      # Публикация релиза
+      - name: Публикация релиза
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GIT_TOKEN }}"
+          automatic_release_tag: "latest-unstable"
+          prerelease: true
+          title: "[Автосборка] Нестабильный релиз"
+          description: ""
+          files: |
+            ~/build-i686-elf/i686-elf-tools-windows.zip
+            ~/build-i686-elf/i686-elf-tools-linux.zip
