@@ -40,6 +40,7 @@ jobs:
       # Скачивание gcc
       - name: Build gcc
         run: |
+          chmod +x ./build.sh
           ./build.sh linux
 
       # 
