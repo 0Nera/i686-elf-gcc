@@ -1,0 +1,50 @@
+name: Autobuild
+
+# Контроль событий при которых будет сборка
+on:
+  schedule: # Минута   Час        День       Месяц      День недели
+    - cron:   '0        *        *           *         *'
+
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Установка зависимостей
+      - name: Installing tools
+        run: |
+          echo 123
+        # sudo apt update
+        #  sudo apt upgrade
+        #  sudo -E DEBIAN_FRONTEND=noninteractive apt-get -qq install git     \
+        #    autoconf automake autopoint bash bison bzip2 flex gettext           \
+        #    g++ gperf intltool libffi-dev libgdk-pixbuf2.0-dev                  \
+        #    libtool libltdl-dev libssl-dev libxml-parser-perl make python3-mako \
+        #    openssl p7zip-full patch perl pkg-config python ruby scons          \
+        #    sed unzip wget xz-utils libtool-bin texinfo g++-multilib lzip -y
+
+      # Скачивание gcc
+      - name: Build gcc
+        run: |
+          ./build.sh linux
+
+      # 
+      - name: Check gcc
+        run: |
+          ls
+
+      
