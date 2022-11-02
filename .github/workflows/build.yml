@@ -41,11 +41,12 @@ jobs:
       - name: Build gcc
         run: |
           chmod +x ./build.sh
-          ./build.sh linux
+          ./build.sh
 
       # 
       - name: Check gcc
         run: |
-          ls
+          ls $HOME/build-i686-elf
+          ls $HOME/build-i686-elf/bin
 
       
