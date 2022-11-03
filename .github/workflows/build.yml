@@ -37,11 +37,23 @@ jobs:
         #    openssl p7zip-full patch perl pkg-config python ruby scons          \
         #    sed unzip wget xz-utils libtool-bin texinfo g++-multilib lzip -y
 
-      # Скачивание gcc
-      - name: Build gcc
+      
+
+      
+      - name: Build gcc for linux
         run: |
+          sudo -s
           chmod +x ./build.sh
-          ./build.sh
+          ./build.sh linux
+        continue-on-error: true
+
+      
+      - name: Build gcc for windows
+        run: |
+          sudo -s
+          chmod +x ./build.sh
+          ./build.sh windows
+        continue-on-error: true
 
       # 
       - name: Check gcc
