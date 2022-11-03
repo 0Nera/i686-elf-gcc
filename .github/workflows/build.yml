@@ -3,7 +3,7 @@ name: Autobuild
 # Контроль событий при которых будет сборка
 on:
   schedule: # Минута   Час        День       Месяц      День недели
-    - cron:   '0        0        *           *         *'
+    - cron:   '0        0        0           *         *'
 
   workflow_dispatch:
   push:
