@@ -59,8 +59,6 @@ jobs:
       - name: Check gcc
         run: |
           ls $HOME/build-i686-elf
-          ls $HOME/build-i686-elf/bin
-          ls ~/build-i686-elf/
       
       # Публикация релиза
       - name: Публикация релиза
@@ -72,5 +70,5 @@ jobs:
           title: "[Автосборка] Нестабильный релиз"
           description: ""
           files: |
-            ~/build-i686-elf/i686-elf-tools-windows.zip
-            ~/build-i686-elf/i686-elf-tools-linux.zip
+            $HOME/build-i686-elf/i686-elf-tools-windows.zip
+            $HOME/build-i686-elf/i686-elf-tools-linux.zip
